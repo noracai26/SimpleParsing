@@ -5,6 +5,7 @@ import os
 import pathlib
 import sys
 import warnings
+from simple_parsing.utils import print_coverage
 from logging import getLogger as get_logger
 from typing import Any, Generic, TypeVar
 
@@ -48,6 +49,10 @@ class SimpleAttributeTuple(NamedTuple):
     field_type: type
     passed_cmdline_value: str
     expected_value: Any
+
+def pytest_sessionfinish(session, exitstatus):
+    print("All tests have finished running.")
+    print_coverage()
 
 
 @pytest.fixture(params=simple_arguments)
