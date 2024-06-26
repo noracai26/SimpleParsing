@@ -38,8 +38,10 @@ from typing import (
 from typing_extensions import Literal, Protocol, TypeGuard, get_args, get_origin
 
 branch_coverage = {
-    "ugly_example_post_init_1" : False,
-    "ugly_example_post_init_2" : False
+    "setattr_recursive_branch1": False,  # if branch for x > 0
+    "setattr_recursive_branch2": False,  # else branch
+    "getattr_recursive_branch1": False,  # if branch for x > 0
+    "getattr_recursive_branch2": False   # else branch
 }
 
 # There are cases where typing.Literal doesn't match typing_extensions.Literal:
@@ -693,23 +695,37 @@ def _parse_container(container_type: type[Container]) -> Callable[[str], list[An
     _parse.__name__ = T.__name__
     return _parse
 
+def print_coverage():
+    for branch, hit in branch_coverage.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
 
 def setattr_recursive(obj: object, attribute_name: str, value: Any):
     if "." not in attribute_name:
+        branch_coverage["setattr_recursive_branch1"] = True
+        print("Positive")
         setattr(obj, attribute_name, value)
     else:
+        branch_coverage["setattr_recursive_branch2"] = True
+        print("Non-Positive")
         parts = attribute_name.split(".")
         child_object = getattr(obj, parts[0])
         setattr_recursive(child_object, ".".join(parts[1:]), value)
-
+    print_coverage()
 
 def getattr_recursive(obj: object, attribute_name: str):
     if "." not in attribute_name:
+        branch_coverage["getattr_recursive_branch1"] = True
+        print("Positive")
+        print_coverage()
         return getattr(obj, attribute_name)
     else:
+        branch_coverage["getattr_recursive_branch2"] = True
+        print("Non-Positive")
         child_attr, _, rest_of_attribute_name = attribute_name.partition(".")
         child_object = getattr(obj, child_attr)
+        print_coverage()
         return getattr_recursive(child_object, rest_of_attribute_name)
+
 
 
 def split_dest(destination: str) -> tuple[str, str]:
@@ -980,5 +996,24 @@ def all_subclasses(t: type[T]) -> set[type[T]]:
 
 if __name__ == "__main__":
     import doctest
+    
+    class Address:
+        def __init__(self, city):
+            self.city = city
+
+    class Person:
+        def __init__(self, name, age, address):
+            self.name = name
+            self.age = age
+            self.address = address
+
+    address = Address(city="New York")
+    person = Person(name="John", age=30, address=address)
+
+
+    setattr_recursive(person, "address.city", "Los Angeles")
+
+    getattr_recursive(person, "name")
+
 
     doctest.testmod()

@@ -8,6 +8,8 @@ import simple_parsing.utils as utils
 from simple_parsing import mutable_field
 from simple_parsing.helpers import dict_field, list_field, set_field
 from simple_parsing.utils import flatten_join, unflatten_split
+from simple_parsing.utils import setattr_recursive
+from simple_parsing.utils import getattr_recursive, branch_coverage, print_coverage
 
 from .testutils import TestSetup, parametrize
 
@@ -184,3 +186,53 @@ def test_unflatten():
     a = {"b": 2, "c": 3}
     d = {"a": a, "d": {"e": a}}
     assert unflatten_split(flatten_join(d)) == d
+
+def test_setattr_recursive():
+    class SimpleClass:
+        def __init__(self):
+            self.a = None
+
+    class NestedClass:
+        def __init__(self):
+            self.child = SimpleClass()
+
+    obj = SimpleClass()
+    setattr_recursive(obj, 'a', 12)
+    assert obj.a == 123, f"Expected obj.a to be 12, but got {obj.a}"
+
+    nested_obj = NestedClass()
+    setattr_recursive(nested_obj, 'child.a', 45)
+    assert nested_obj.child.a == 45, f"Expected nested_obj.child.a to be 456, but got {nested_obj.child.a}"
+
+    print("All tests passed!")
+
+    if __name__ == "__main__":
+        test_setattr_recursive()
+
+class SimpleClass:
+    def __init__(self):
+        self.a = 52
+
+class NestedClass:
+    def __init__(self):
+        self.child = SimpleClass()
+
+def test_getattr_recursive():
+    obj = SimpleClass()
+    assert getattr_recursive(obj, 'a') == 52
+    assert branch_coverage["getattr_recursive_branch1"] == True
+    assert branch_coverage["getattr_recursive_branch2"] == False
+
+    branch_coverage["getattr_recursive_branch1"] = False
+    branch_coverage["getattr_recursive_branch2"] = False
+
+    nested_obj = NestedClass()
+    assert getattr_recursive(nested_obj, 'child.a') == 52
+    assert branch_coverage["getattr_recursive_branch1"] == False
+    assert branch_coverage["getattr_recursive_branch2"] == True
+
+    print("All tests passed!")
+    print_coverage()
+
+if __name__ == "__main__":
+    test_getattr_recursive()
