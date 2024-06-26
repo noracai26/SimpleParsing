@@ -53,7 +53,13 @@ branch_coverage = {
     "get_item_type_3" : False,
     "get_argparse_type_for_container_1" : False,
     "get_argparse_type_for_container_2" : False,
-    "get_argparse_type_for_container_3" : False
+    "get_argparse_type_for_container_3" : False,
+    "get_bound_1" : False,
+    "get_bound_2" : False,
+    "description_from_docstring_1" : False,
+    "description_from_docstring_2" : False,
+    "description_from_docstring_3" : False,
+    "description_from_docstring_4" : False
 }
 
 coverage1 = {i: False for i in range(2)}
@@ -79,10 +85,10 @@ def is_typevar(t) -> bool:
 
 def get_bound(t):
     if is_typevar(t):
-        coverage1[0] = True
+        branch_coverage["get_bound_1"] = True
         return getattr(t, "__bound__", None)
     else:
-        coverage1[1] = True
+        branch_coverage["get_bound_2"] = True
         raise TypeError(f"type is not a `TypeVar`: {t}")
 
 

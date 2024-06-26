@@ -25,16 +25,16 @@ def _description_from_docstring(docstring: dp.Docstring) -> str:
     from simple_parsing import utils
     description = ""
     if docstring.short_description:
-        utils.coverage2[0] = True
+        utils.branch_coverage["description_from_docstring_1"] = True
         description += f"{docstring.short_description}\n"
         if docstring.blank_after_short_description:
-            utils.coverage2[1] = True
+            utils.branch_coverage["description_from_docstring_2"] = True
             description += "\n"
     if docstring.long_description:
-        utils.coverage2[2] = True
+        utils.branch_coverage["description_from_docstring_3"] = True
         description += f"{docstring.long_description}\n"
         if docstring.blank_after_long_description:
-            utils.coverage2[3] = True
+            utils.branch_coverage["description_from_docstring_4"] = True
             description += "\n"
     return description
 
