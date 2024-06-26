@@ -267,3 +267,5 @@ New result:
 
 <Write what each group member did>
 Karina Sudnicina: found the project, implemented coverage tool for two functions mentioned above, created a test cases for them.
+
+  Nora: implemeted coverage tool for two functions mentioned above, created test cases for them.
