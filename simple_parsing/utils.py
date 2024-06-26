@@ -41,7 +41,7 @@ branch_coverage = {
     "setattr_recursive_branch1": False,  # if branch for x > 0
     "setattr_recursive_branch2": False,  # else branch
     "getattr_recursive_branch1": False,  # if branch for x > 0
-    "getattr_recursive_branch2": False   # else branch
+    "getattr_recursive_branch2": False,   # else branch
     "ugly_example_post_init_1": False,
     "ugly_example_post_init_2": False,
     "ugly_example_post_init_3": False,
