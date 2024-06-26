@@ -260,7 +260,8 @@ Old result:
 <Provide a screenshot of the new coverage results by running the existing tool using all test modifications made by the group>
 New result:
 
-![5203FD40-78B8-4387-8AA3-2DEED960CAD5_4_5005_c](https://github.com/noracai26/SimpleParsing/assets/90709657/d9827642-a80c-4005-af8a-5082ed2dfaac)
+![2A7F713D-C56E-4102-AF34-E26632752FA7](https://github.com/noracai26/SimpleParsing/assets/90709657/c5a8c49c-1661-414e-ad82-f017c687dfbc)
+
 
 ## Statement of individual contributions
 
