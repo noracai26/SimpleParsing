@@ -268,6 +268,8 @@ New result:
 <Write what each group member did>
 Karina Sudnicina: found the project, implemented coverage tool for two functions mentioned above, created a test cases for them.
 
-  Nora: implemeted coverage tool for two functions mentioned above, created test cases for them.
+  Nora Cai: implemeted coverage tool for two functions mentioned above, created test cases for them.
 
   Sanne Aerts: Created a function-based coverage tool for two chosen functions and developed new test cases for them to enhance their coverage.
+
+  Che Lai:  imlemented coverage tool for two functions and enhance their coverage by creating new test cases.
