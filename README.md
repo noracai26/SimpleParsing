@@ -269,3 +269,5 @@ New result:
 Karina Sudnicina: found the project, implemented coverage tool for two functions mentioned above, created a test cases for them.
 
   Nora: implemeted coverage tool for two functions mentioned above, created test cases for them.
+
+  Sanne Aerts: Created a function-based coverage tool for two chosen functions and developed new test cases for them to enhance their coverage.
