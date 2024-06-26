@@ -23,7 +23,7 @@ Coverage.py via the command: coverage run -m pytest
 
 <The following is supposed to be repeated for each group member>
 
-<Group member name> Karina Sudnicina
+<Group member name> **Karina Sudnicina**
 
 Function 1 name: get_bound(t) from simple_parsing/utils.py
 
@@ -36,7 +36,7 @@ Function 2 name: _description_from_docstring(docstring: dp.Docstring) from simpl
 
 <br>
 
-<Group member name>Nora Cai
+<Group member name>**Nora Cai**
 
 Function 1 name: def __post_init__ from examples/ugly_example_after.py
 
@@ -54,7 +54,7 @@ Function 2 name: def contains_dataclass_type_arg from simple_parsing/utils.py
 
 <br>
 
-<Group member name> Che Lai
+<Group member name> **Che Lai**
 
 Function 1 name: def setattr_recursive from simple_parsing/utils.py
 
@@ -63,7 +63,7 @@ Function 1 name: def setattr_recursive from simple_parsing/utils.py
 ![3841718649695_ pic](https://github.com/noracai26/SimpleParsing/assets/135572774/709ec3c8-3a38-4168-a196-c7810c918069)
 
 
-<Function 2 name> def getattr_recursive from simple_parsing/utils.py
+Function 2 name: def getattr_recursive from simple_parsing/utils.py
 
 ![3901718737537_ pic](https://github.com/noracai26/SimpleParsing/assets/135572774/953f9db4-611b-459a-9aa1-f3b77f17e2e5)
 
@@ -71,26 +71,22 @@ Function 1 name: def setattr_recursive from simple_parsing/utils.py
 
 <br>
 
-<Group member name> Sanne Aerts
-
-The global variable branch_coverage tracks coverage, and the print_coverage() function prints the results.
-This function is called in config.py after all tests have been run with pytest.
-![image](https://github.com/noracai26/SimpleParsing/assets/97464986/316afcc2-ffd0-4bd3-b71e-4358d182efb8)
+<Group member name> **Sanne Aerts**
 
 Function 1: get_item_type from simple_parsing/utils.py
 
 The instrumented function
 ![image](https://github.com/noracai26/SimpleParsing/assets/97464986/c44eb8a2-d2b4-40c8-b0f8-c8ead9ad758b)
 
-Coverage results output from the instrumentation
+Coverage results output from the instrumentation <br>
 ![image](https://github.com/noracai26/SimpleParsing/assets/97464986/0b738d01-ac1f-4885-b206-14c8c21bc4de)
 
 Function 2: get_argparse_type_for_container from simple_parsing/utils.py
 
-The instrumented function
+The instrumented function<br>
 ![image](https://github.com/noracai26/SimpleParsing/assets/97464986/fb502335-2e13-4033-91b6-12b77801540c)
 
-Coverage results output from the instrumentation
+Coverage results output from the instrumentation<br>
 ![image](https://github.com/noracai26/SimpleParsing/assets/97464986/788bd88d-6aa9-409b-b90c-e8d03d49d47c)
 
 <br>
@@ -101,7 +97,7 @@ Coverage results output from the instrumentation
 
 <The following is supposed to be repeated for each group member>
 
-<Group member name> Karina Sudnicina
+<Group member name> **Karina Sudnicina**
 
 Test 1: get_bound(t)
 
@@ -124,7 +120,7 @@ Coverage after: <br>![description_from_docstring_after](https://github.com/norac
 Similarly, the function was not covered completely. Adding new test cases for this function raised the coverage of decorators.py file for 2% - from 91 to 93. The function is now covered by 100% and the 'missing' statements number has also decreased by 1 - from 6 to 5. 
 
 <br><br>
-<Group member name> Nora Cai
+<Group member name> **Nora Cai**
 
 Test 1: test/test_ugly_example_after.py
 
@@ -172,11 +168,10 @@ percentage of improvement: 14%
 The coverage of the function def contains_dataclass_type_arg went from 86% to 100%, the increase is caused by the enhancement of test cases that that covers the second branch of the function, which was not previously covered.
 
 
+<br><br>
+<Group member name> **Che Lai**
 
-<br>
-<Group member name> Che Lai
-
-<Test 1> setattr_recursive
+Test 1: setattr_recursive
 
 old coverage results: (coverage: 0%)
 ![3871718651183_ pic](https://github.com/noracai26/SimpleParsing/assets/135572774/2b43ac8b-5a4d-4378-9e12-e01319eb5d4b)
@@ -191,7 +186,7 @@ new coverage results: (coverage: 100%)
 
 In the original test file, there was no test case for this function, so the coverage of this function was 0%, then I added the test code for this function, then its coverage increased to 100%.
 
-<Test 2> getattr_recursive
+Test 2: getattr_recursive
 
 old coverage results: (coverage: 0%)
 
@@ -208,8 +203,8 @@ percentage of improvement: 100%
 
 Same as the function in Test 1, there was no test case for this function, so the old covearage was 0%, after I added test case for it, the coverage of this function increased to 100%.
 
-<br>
-<Group member name> Sanne Aerts
+<br><br>
+<Group member name> **Sanne Aerts**
 
 Test 1: New test for Function 1 (get_item_type from simple_parsing/utils.py) to hit the third branch.
 ![image](https://github.com/noracai26/SimpleParsing/assets/97464986/03b45af5-dd3a-41c0-bd72-566bd9430794)
@@ -267,7 +262,7 @@ New result:
 
 
 <Write what each group member did>
-Karina Sudnicina: found the project, implemented coverage tool for two functions mentioned above, created a test cases for them.
+  Karina Sudnicina: found the project, implemented coverage tool for two functions mentioned above, created a test cases for them.
 
   Nora Cai: implemeted coverage tool for two functions mentioned above, created test cases for them.
 
