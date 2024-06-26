@@ -47,7 +47,13 @@ branch_coverage = {
     "ugly_example_post_init_3": False,
     "contains_dataclass_type_arg_1": False,
     "contains_dataclass_type_arg_2": False,
-    "contains_dataclass_type_arg_3": False
+    "contains_dataclass_type_arg_3": False,
+    "get_item_type_1" : False,
+    "get_item_type_2" : False,
+    "get_item_type_3" : False,
+    "get_argparse_type_for_container_1" : False,
+    "get_argparse_type_for_container_2" : False,
+    "get_argparse_type_for_container_3" : False
 }
 
 coverage1 = {i: False for i in range(2)}
@@ -215,19 +221,20 @@ def get_item_type(container_type: type[Container[T]]) -> T:
         Dict,
         Mapping,
         MutableMapping,
-    }:
+    }: 
+        branch_coverage["get_item_type_1"] = True
         # the built-in `list` and `tuple` types don't have annotations for their item types.
         return Any
     type_arguments = getattr(container_type, "__args__", None)
     if type_arguments:
+        branch_coverage["get_item_type_2"] = True
         return type_arguments[0]
     else:
+        branch_coverage["get_item_type_3"] = True
         return Any
+        
 
-
-def get_argparse_type_for_container(
-    container_type: type[Container[T]],
-) -> type[T] | Callable[[str], T]:
+def get_argparse_type_for_container(container_type: type[Container[T]],) -> type[T] | Callable[[str], T]:
     """Gets the argparse 'type' option to be used for a given container type. When an annotation is
     present, the 'type' option of argparse is set to that type. if not, then the default value of
     'str' is returned.
@@ -244,10 +251,13 @@ def get_argparse_type_for_container(
     """
     T = get_item_type(container_type)
     if T is bool:
+        branch_coverage["get_argparse_type_for_container_1"] = True
         return str2bool
     if T is Any:
+        branch_coverage["get_argparse_type_for_container_2"] = True
         return str
     if is_enum(T):
+        branch_coverage["get_argparse_type_for_container_3"] = True
         # IDEA: Fix this weirdness by first moving all this weird parsing logic into the
         # field wrapper class, and then split it up into different subclasses of FieldWrapper,
         # each for a different type of field.
